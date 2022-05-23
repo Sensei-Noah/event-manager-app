@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\EventsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [EventsController::class, 'index']);
+Route::get('/add-event', [EventsController::class, 'addEvent']);
+Route::post('/store', [EventsController::class, 'store']);
+Route::get('/events', [EventsController::class, 'show']);
+Route::get('/event/{event}', [EventsController::class, 'showEvent']);
+Route::get('/event/update/{event}', [EventsController::class, 'edit']);
+Route::get('/event/delete/{event}', [EventsController::class, 'destroy']);
+Route::post('/update/{event}', [EventsController::class, 'update']);
+
 Route::get('/contacts', function () {
     return view('pages.contacts');
-});
-Route::get('/events', function () {
-    return view('pages.events');
 });
 Route::get('/about', function () {
     return view('pages.about');
 });
+Auth::routes();
+
+Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/home', [HomeController::class, 'index']);

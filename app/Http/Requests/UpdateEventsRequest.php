@@ -13,7 +13,7 @@ class UpdateEventsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true; //TODO: auth
     }
 
     /**

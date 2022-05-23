@@ -3,17 +3,25 @@
     
 <div id="portfolio">
     <div class="container-fluid p-0">
-        <div class="row g-0">
+        <div class="row g-0 justify-content-center">
+            <hr class="my-4" />
+            @foreach ($events as $event) 
             <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="Project Name">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="..." />
+                <a class="portfolio-box" href="/storage/{{ $event->image }}" title="{{ $event->title }}">
+                    <img class="img-fluid w-100" src="/storage/{{ $event->image }}" alt="..." />
                     <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
+                        <div class="project-category text-white-50">{{ $event->title }}</div>
+                        <div class="project-name">{{ $event->title }}</div>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6">
+            <hr class="my-4" />
+            @endforeach
+            <div class="d-flex justify-content-end md-4">
+                {{ $events->links() }}
+            </div>
+
+            {{-- <div class="col-lg-4 col-sm-6">
                 <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg" title="Project Name">
                     <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="..." />
                     <div class="portfolio-box-caption">
@@ -21,43 +29,8 @@
                         <div class="project-name">Project Name</div>
                     </div>
                 </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg" title="Project Name">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg" title="Project Name">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg" title="Project Name">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg" title="Project Name">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="..." />
-                    <div class="portfolio-box-caption p-3">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
+            </div> --}}
+
         </div>
     </div>
 </div>
