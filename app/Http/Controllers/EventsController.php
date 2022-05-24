@@ -23,7 +23,6 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //$user = User::
         $events = Events::paginate(4);
         return view('pages.home', compact('events'));
     }
@@ -83,6 +82,7 @@ class EventsController extends Controller
         $events = Events::paginate(6);
         return view('pages.events', compact('events'));
     }
+
     public function showEvent(Events $event)
     {
         $date_arr= explode(" ", $event->dateTime);
@@ -99,10 +99,11 @@ class EventsController extends Controller
      */
     public function edit(Events $event)
     {
+        $dateTimeStr = str_replace(' ', 'T', $event->dateTime);
         if(Gate::denies('edit-event', $event)){
             return view('pages.denies');
         }
-        return view('pages.edit-event', compact('event'));
+        return view('pages.edit-event', compact('event', 'dateTimeStr'));
     }
 
     /**

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\SignupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,19 @@ Route::get('/event/update/{event}', [EventsController::class, 'edit']);
 Route::get('/event/delete/{event}', [EventsController::class, 'destroy']);
 Route::post('/update/{event}', [EventsController::class, 'update']);
 
+Route::get('/signups/{event}', [SignupController::class, 'index']);
+Route::post('/store-signups', [SignupController::class, 'store']);
+Route::get('/all-signups', [SignupController::class, 'show']);
+
+
 Route::get('/contacts', function () {
     return view('pages.contacts');
 });
 Route::get('/about', function () {
     return view('pages.about');
 });
+
+
 Auth::routes();
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout');

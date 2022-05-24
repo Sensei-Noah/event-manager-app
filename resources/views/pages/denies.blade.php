@@ -15,7 +15,7 @@
 
                     {{ __('There has been and error. Please try again') }}
                 </div>
-                <a class="btn btn-primary mt-2" href="/">Go back</a>
+                <a class="btn btn-primary mt-2" href="{{ url()->previous() }}">Go back</a>
             </div>
         </div>
     </div>

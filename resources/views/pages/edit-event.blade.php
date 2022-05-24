@@ -11,7 +11,7 @@
         <textarea class="form-control" id="" cols="30" rows="10" name="description" placeholder="Description">{{ $event->description}}</textarea>
     </div>
     <div class="input-group mb-2">
-        <input class="form-control" type="datetime-local" name="dateTime" required value="{{ $event->dateTime }}">
+        <input class="form-control" type="datetime-local" name="dateTime" required value="{{ $dateTimeStr }}">
     </div>
     <div class="mb-2">
         <label for="formFile" class="form-label">Add an image</label>

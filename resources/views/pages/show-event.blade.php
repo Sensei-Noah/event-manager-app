@@ -2,7 +2,6 @@
 @section('content')
 <div class="container">
     <h1 class="mt-4">{{ $event->title }}</h1>
-    <p class="text-muted">Made by {{ auth()->user()->name }}</p>
     <p>{{ $date }} / {{ $time }}</p>
     <hr class="my-4" />
     <div class="row">
@@ -11,25 +10,49 @@
     </div>
 
     <div class="mt-5">
-        <hr class="my-4" />
-        <h3>Controls</h3>
+      <hr class="my-4" />
+      @if (Auth::check())
+
+        @if ($event->user_id === Auth::user()->id) {{-- TODO: Registering for the actual event --}}
+          <h3>Controls</h3>
+          <ul class="" type="none">
+
+            <li>
+              <a href="/all-signups" class="btn btn-primary mt-2">Event signups</a>
+            </li>
+            <li>
+                <a href="/event/update/{{ $event->id }}" class="btn btn-primary mt-2">Editing</a>
+            </li>
+            <li>
+                <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#deleteConformation">Deletion</button>
+            </li>
+            </ul>
+        @else
+          <h3>Signup for the event</h3>
+          <ul class="" type="none">
+            <li>
+              <a class="btn btn-primary mt-2" href="/signups/{{ $event->id }}">Signup</a>
+            </li>
+          </ul>
+
+            {{-- <li>
+                <a class="btn btn-primary mt-2" href="/login">Login</a>
+            </li>
+            <li>
+                <a class="btn btn-primary mt-2" href="/register">Register</a>
+            </li> --}}
+        @endif
+
+      @else
+        <h3>Signup for the event</h3>
         <ul class="" type="none">
-             @if (Auth::check()) {{-- TODO: Registering for the actual event --}}
-                <li>
-                    <a href="/event/update/{{ $event->id }}" class="btn btn-primary mt-2">Editing</a>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#deleteConformation">Deletion</button>
-                </li>
-            @else
-                <li>
-                    <a class="btn btn-primary mt-2" href="/login">Login</a>
-                </li>
-                <li>
-                    <a class="btn btn-primary mt-2" href="/register">Register</a>
-                </li>
-            @endif
+          <li>
+            <a class="btn btn-primary mt-2" href="/signups/{{ $event->id }}">Signup</a>
+          </li>
         </ul>
+      @endif
+
+
     </div>
         
     

@@ -6,11 +6,16 @@
         <div class="row g-0 justify-content-center">
             <hr class="my-4" />
             @foreach ($events as $event) 
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="/storage/{{ $event->image }}" title="{{ $event->title }}">
+            <div class="col-lg-4 col-sm-6 portfolio-box">
+                <a class="" href="/event/{{ $event->id }}" >
                     <img class="img-fluid w-100" src="/storage/{{ $event->image }}" alt="..." />
                     <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">{{ $event->title }}</div>
+                        <div class="project-category text-white-50">
+                            @php
+                                $dateTimeStr = str_replace(' ', '/', $event->dateTime);
+                            @endphp
+                            {{ $dateTimeStr }}
+                        </div>
                         <div class="project-name">{{ $event->title }}</div>
                     </div>
                 </a>
