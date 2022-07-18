@@ -15,7 +15,7 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-                <a class="btn btn-primary mt-2" href="{{ url()->previous() }}">Go back</a>
+                <a class="btn btn-primary mt-2" href="/">Home</a>
             </div>
         </div>
     </div>
